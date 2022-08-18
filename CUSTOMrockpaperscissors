@@ -1,0 +1,133 @@
+#Jason Barican
+#Code below plays a game using a nested loop, as well as keeps tally of wins, losses, ties, and total games
+
+
+
+
+
+
+import random #imports random
+
+#variables for base number of wins/losses/ties/total games
+win = 0
+loss = 0
+tie = 0
+totalgames = 1
+
+#list function for all the possible choices in game
+choices = ['Rock','Paper','Scissors','Lizard','Spock']
+
+#command in variable randomly chooses value in list 'choices'
+computer = random.choice(choices)
+
+#list for yes or no question later on
+prompt = ['yes','no']
+
+print("Let's play Rock, Paper, Scissors, Lizard, Spock!")
+
+
+while True: #infinite loop set for possibility of game repeats
+    i = str(input('Enter your choice:')) 
+    mychoice = i.capitalize() #sets first letter to uppercase and the rest lower case
+    while mychoice not in choices: #loop prompts user to retype input if said input was not valid
+        i = str(input("That's invalid. Please enter Rock, Paper, Scissors, Lizard or Spock:"))
+        mychoice = i.capitalize()
+
+    print("Computer chose", computer)
+
+    if computer == mychoice:
+        print("You both selected",computer,". It's a tie")
+        tie += 1 #adds 1 to number of ties
+                       
+    elif mychoice == 'Rock':
+        if computer == 'Paper': #if and elif statements below follow game rules, and runs fitting statement depending on value
+            print("Paper covers Rock! Computer wins!")
+            loss += 1 #adds 1 to number of losses (applies to every 'loss' statement)
+        elif computer == 'Scissors':
+            print("Rock crushes Scissors! Player wins!")
+            win += 1 #adds 1 to number of wins (applies to every 'win' statement)
+        elif computer == 'Lizard':
+            print("Rock crushes Lizard! Player wins!")
+            win += 1 
+        elif computer == 'Spock':
+            print("Spock vaporizes Rock! Computer wins!")
+            loss += 1 
+
+    elif mychoice == 'Paper':
+        if computer == 'Rock':
+            print("Paper covers Rock! Player wins!")
+            win += 1
+        elif computer == 'Scissors':
+            print("Scissors cuts Paper! Computer wins!")
+            loss += 1
+        elif computer == 'Lizard':
+            print("Lizard eats Paper! Computer wins!")
+            loss += 1
+        elif computer == 'Spock':
+            print("Paper disproves Spock! Player wins!")
+            win += 1
+
+    elif mychoice == 'Scissors':
+        if computer == 'Rock':
+            print("Rock crushes Scissors! Computer wins!")
+            loss += 1
+        elif computer == 'Paper':
+            print("Scissors cuts Paper! Player wins!")
+            win += 1
+        elif computer == 'Lizard':
+            print("Scissors decapitates Lizard! Player wins!")
+            win += 1
+        elif computer == 'Spock':
+            print("Spock smashes Scissors! Computer wins!")
+            loss += 1
+
+    elif mychoice == 'Lizard':
+        if computer == 'Rock':
+            print("Rock crushes Lizard! Computer wins!")
+            loss += 1
+        elif computer == 'Paper':
+            print("Lizard eats Paper! Player wins!")
+            win += 1
+        elif computer == 'Scissors':
+            print("Scissors decapitates Lizard! Computer wins!")
+            loss += 1
+        elif computer == 'Spock':
+            print("Lizard poisons Spock! Player wins!")
+            win += 1
+
+    elif mychoice == 'Spock':
+        if computer == 'Rock':
+            print("Spock vaporizes Rock! Player wins!")
+            win += 1
+        elif computer == 'Paper':
+            print("Paper disproves Spock! Computer wins!")
+            loss += 1
+        elif computer == 'Lizard':
+            print("Lizard poisons Spock! Computer wins!")
+            loss += 1
+        elif computer == 'Scissors':
+            print("Spock smashes Scissors! Player wins!")
+            win += 1
+
+    i2 = str(input("Play again? (yes/no):")) 
+    myprompt = i2.lower() #sets all characters to lowercase
+    while myprompt not in prompt: #loop to retype input if input is not valid
+        i2 = str(input("Invalid response. Play again? Enter yes or no only:"))
+        myprompt = i2.lower()
+    if myprompt == 'yes':
+        totalgames += 1 #adds 1 to total games played, and starts back to the top of the while True statement
+    if myprompt == 'no':
+        break #ends the infinite loop if the user inputs 'no'
+
+print("Number of games played: ",totalgames) #outputs total games played
+print("Games you won: ",win) #outputs number of wins
+print("Games the computer won: ", loss) #outputs number of losses
+print("Tie games: ", tie) #outputs number of ties
+print("Thanks for playing!") #yes
+
+    
+    
+
+
+
+               
